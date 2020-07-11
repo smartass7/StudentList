@@ -17,11 +17,11 @@ public class GreetingController {
     private Service service = new ServiceImpl();
 
 
-    @RequestMapping(value = "/greeting", method = RequestMethod.GET)
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String getStudentList(Model model) {
         List<Student> students = service.getAll();
         model.addAttribute("studentList", students);
-        return "greeting";
+        return "main";
     }
 
     @RequestMapping(value = "/add-new-student", method = RequestMethod.POST)
@@ -38,7 +38,7 @@ public class GreetingController {
         newStudent.setPassport(passport);
         newStudent.setPhoneNumber(phoneNumber);
         service.addStudent(newStudent);
-        return "redirect:/greeting";
+        return "redirect:/main";
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
@@ -46,7 +46,7 @@ public class GreetingController {
     public String delete(@PathVariable Integer id) {
         Student studentToRemove = service.getById(id);
         service.removeStudent(studentToRemove);
-        return "redirect:/greeting";
+        return "redirect:/main";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
@@ -76,7 +76,7 @@ public class GreetingController {
         studentToEdit.setFirstName(firstName);
         studentToEdit.setLastName(lastName);
         //studentToEdit.setId(id);
-        return "redirect:/greeting";
+        return "redirect:/main";
     }
 
 }
