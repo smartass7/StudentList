@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Список студентов</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<Div></Div>
+
+<h2>Студенты</h2>
+<table cellspacing="2" border="1" cellpadding="5" width="600">
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Паспорт</th>
+        <th>Номер телефона</th>
+        <th>id</th>
+        <th>Действие</th>
+        <th> </th>
+    </tr>
+
+    {{#studentList}}
+    <tr>
+        <td>{{lastName}}</td>
+        <td>{{firstName}}</td>
+        <td>{{patronymic}}</td>
+        <td>{{passport}}</td>
+        <td>{{phoneNumber}}</td>
+        <td>{{id}}</td>
+        <td><a href="/delete/{{id}}">Удалить</a></td>
+        <td><a href="/edit/{{id}}">Изменить</a></td>
+    </tr>
+    {{/studentList}}
+
+
+</table>
+<hr>
+<form action="/add-new-student" method="POST">
+    <p><input name="lastName" placeholder="Фамилия"></p>
+    <p><input name="firstName" placeholder="Имя"></p>
+    <p><input name="patronymic" placeholder="Отчество"></p>
+    <p><input name="passport" placeholder="Паспорт"></p>
+    <p><input name="phoneNumber" placeholder="Номер телефона"></p>
+    <p><input type="submit" value="Добавить"></p>
+</form>
+
+</body>
+</html>
